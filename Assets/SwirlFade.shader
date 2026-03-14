@@ -67,7 +67,7 @@ Shader "Unlit/SwirlFade"
                 fixed4 colA = tex2D(_MainTex, uv);
                 fixed4 colB = tex2D(_SecondTex, uv);
                 //fade computation
-                float fade = (sin(_Time.y * 2.0) + 1.0) * 0.5;
+                float fade = (sin(_Time.y * 0.8 + 1.57) + 1.0) * 0.5;
                 //texture blend
                 fixed4 col = lerp(colA, colB, fade);
                 return col;
