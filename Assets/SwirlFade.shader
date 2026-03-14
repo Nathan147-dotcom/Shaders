@@ -53,11 +53,11 @@ Shader "Unlit/SwirlFade"
                 //angle calculation
                 float a = atan2(uv.y, uv.x);
                 //distance computation
-                float d = length(uv);
-                //swirl using built in time
-                float twirl = sin(_Time.y) * 3.0;
+                float d = length(uv); 
+                //twirl using built in time
+                float twirl = sin(_Time.y) * 8.0;
                 //angle offset
-                a += (0.5 - d) * twirl;
+                a += (0.7 - d) * twirl;
                 //coordinates conversions
                 uv.x = cos(a) * d;
                 uv.y = sin(a) * d;
@@ -67,7 +67,7 @@ Shader "Unlit/SwirlFade"
                 fixed4 colA = tex2D(_MainTex, uv);
                 fixed4 colB = tex2D(_SecondTex, uv);
                 //fade computation
-                float fade = (sin(_Time.y) + 1.0) * 0.5;
+                float fade = (sin(_Time.y * 2.0) + 1.0) * 0.5;
                 //texture blend
                 fixed4 col = lerp(colA, colB, fade);
                 return col;
